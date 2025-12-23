@@ -1,12 +1,12 @@
-\# Subscription Billing API
+# Subscription Billing API
 
 
 
-A \*\*Spring Boot REST API\*\* that exposes core billing operations for a subscription-based system.
+A **Spring Boot REST API** that exposes core billing operations for a subscription-based system.
 
 This project builds on the domain logic from `subscription-billing-system` and focuses on
 
-\*\*API design, validation, persistence, and testability\*\*.
+**API design, validation, persistence, and testability**.
 
 
 
@@ -18,7 +18,7 @@ This is a backend-only service intended for learning and portfolio purposes.
 
 
 
-\## What This API Does
+## What This API Does
 
 
 
@@ -26,18 +26,18 @@ The API provides HTTP endpoints to manage billing-related resources such as:
 
 
 
-* Subscription plans
-* Customers
-* (Future) subscriptions, invoices, and payments
+- Subscription plans
+- Customers
+- (Future) subscriptions, invoices, and payments
 
 
 
 It is designed with:
 
-* Clear separation between \*\*domain logic\*\* and \*\*API layer\*\*
-* Validation at the boundary (request DTOs)
-* Simple persistence using Spring Data JPA
-* Fast, repeatable tests
+- Clear separation between \*\*domain logic\*\* and \*\*API layer\*\*
+- Validation at the boundary (request DTOs)
+- Simple persistence using Spring Data JPA
+- Fast, repeatable tests
 
 
 
@@ -45,22 +45,22 @@ It is designed with:
 
 
 
-\## Current Features
+## Current Features
 
 
 
-\### Plans
+### Plans
 
-* Create a billing plan
-* List all plans
+- Create a billing plan
+- List all plans
 
 
 
 Each plan contains:
 
-* Name
-* Monthly price (in cents)
-* Currency (ISO code)
+- Name
+- Monthly price (in cents)
+- Currency (ISO code)
 
 
 
@@ -68,29 +68,23 @@ Each plan contains:
 
 
 
-\## Example API Usage
+## Example API Usage
 
 
 
-\### Create a Plan
+### Create a Plan
 
 
 
 ```bash
 
-curl -X POST http://localhost:8080/plans \\
-
-&nbsp; -H "Content-Type: application/json" \\
-
-&nbsp; -d '{
-
-&nbsp;   "name": "Starter",
-
-&nbsp;   "amountCents": 1500,
-
-&nbsp;   "currency": "EUR"
-
-&nbsp; }'
+curl -X POST http://localhost:8080/plans \
+ -H "Content-Type: application/json" \
+ -d '{
+   "name": "Starter",
+   "amountCents": 1500,
+   "currency": "EUR"
+ }'
 
 ```
 
@@ -103,22 +97,17 @@ Response:
 ```json
 
 {
-
-&nbsp; "id": 1,
-
-&nbsp; "name": "Starter",
-
-&nbsp; "amountCents": 1500,
-
-&nbsp; "currency": "EUR"
-
+ "id": 1,
+ "name": "Starter",
+ "amountCents": 1500,
+ "currency": "EUR"
 }
 
 ```
 
 
 
-\### List Plans
+### List Plans
 
 
 
@@ -134,69 +123,62 @@ Response:
 
 ```json
 
-\[
-
-&nbsp; {
-
-&nbsp;   "id": 1,
-
-&nbsp;   "name": "Starter",
-
-&nbsp;   "amountCents": 1500,
-
-&nbsp;   "currency": "EUR"
-
-&nbsp; }
-
+[
+ {
+   "id": 1,
+   "name": "Starter",
+   "amountCents": 1500,
+   "currency": "EUR"
+ }
 ]
 
 ```
 
 
 
-\## Tech Stack
+## Tech Stack
 
 
 
-* Java 17
+- Java 17
 
 
 
-* Spring Boot
+- Spring Boot
 
 
 
-* Spring Web
+- Spring Web
 
 
 
-* Spring Data JPA
+- Spring Data JPA
 
 
 
-* Jakarta Validation
+- Jakarta Validation
 
 
 
-* H2 (in-memory database)
+- H2 (in-memory database)
 
 
 
-* Maven (via Maven Wrapper)
+- Maven (via Maven Wrapper)
 
 
 
-* JUnit 5
+- JUnit 5
 
 
 
 
 
-\## Running the Application
+## Running the Application
 
 
 
-\### Requirements
+### Requirements
 
 
 
@@ -206,13 +188,13 @@ Java 17+
 
 
 
-\### Start the app
+### Start the app
 
 Windows (PowerShell):
 
 
 
-.\\mvnw.cmd spring-boot:run
+.\mvnw.cmd spring-boot:run
 
 
 
@@ -234,7 +216,7 @@ http://localhost:8080
 
 
 
-\## Running Tests
+## Running Tests
 
 
 
@@ -246,39 +228,29 @@ All tests run against an in-memory database and do not require external services
 
 
 
-\## Project Structure
+## Project Structure
 
-&nbsp;
+
 
 ```text
 
-&nbsp;src/
+src/
 
-&nbsp;├─ main/
-
-&nbsp;│   ├─ java/
-
-&nbsp;│   │   └─ com.erjon.billing.api
-
-&nbsp;│   │       ├─ plans        # controllers, entities, repositories
-
-&nbsp;│   │       └─ domain       # shared domain models
-
-&nbsp;│   └─ resources/
-
-&nbsp;│       └─ application.properties
-
-&nbsp;└─ test/
-
-&nbsp;    └─ java/
-
-&nbsp;        └─ controller tests
-
+├─ main/
+│   ├─ java/
+│   │   └─ com.erjon.billing.api
+│   │       ├─ plans        # controllers, entities, repositories
+│   │       └─ domain       # shared domain models
+│   └─ resources/
+│       └─ application.properties
+└─ test/
+    └─ java/
+        └─ controller tests
 ```
 
 
 
-\## Relationship to Other Repositories
+## Relationship to Other Repositories
 
 
 
@@ -286,19 +258,19 @@ This project is part of a larger portfolio:
 
 
 
-* \*\*subscription-billing-system\*\*
+* **subscription-billing-system\**
 
 Pure domain + business logic (no framework)
 
 
 
-* \*\*subscription-billing-api\*\* (this repo)
+- **subscription-billing-api** (this repo)
 
 REST API layer exposing billing operations
 
 
 
-* \*\*transaction-ledger\*\*
+- **transaction-ledger**
 
 Financial transaction tracking and correctness modeling
 
@@ -310,7 +282,7 @@ Together, these demonstrate layered backend system design.
 
 
 
-\## Future Improvements
+## Future Improvements
 
 
 
@@ -318,7 +290,7 @@ Customer endpoints
 
 
 
-Subscriptions \& invoices
+Subscriptions & invoices
 
 
 
@@ -334,7 +306,7 @@ Database-backed persistence
 
 
 
-Authentication \& authorization
+Authentication & authorization
 
 
 
